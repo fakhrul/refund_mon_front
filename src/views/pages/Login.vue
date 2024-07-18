@@ -161,7 +161,7 @@ export default {
         .doLogin(data)
         .then((response) => {
           auth.recordLogin(response.data.token, response.data.user);
-          self.$router.push({ path: "/pages/TransactionList" });
+          self.$router.push({ path: "/dashboard" });
         })
         .catch(({ data }) => {
           console.log(data);
