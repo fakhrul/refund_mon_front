@@ -1,6 +1,6 @@
 // public/config.js
 window.config = {
-    API_URL:'http://127.0.0.1:5005/api/',
+    API_URL:'http://178.128.105.21:8104/api/',
     VERSION:'v1.0.0.25'
 };
 

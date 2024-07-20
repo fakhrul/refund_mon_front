@@ -12,7 +12,12 @@ const Users = () => import('@/views/pages/Users')
 const User = () => import('@/views/pages/User')
 
 const TransactionList = () => import('@/views/pages/TransactionList')
+const Transaction = () => import('@/views/pages/Transaction')
 const MyProfile = () => import('@/views/pages/MyProfile')
+
+const SearchTransaction = () => import('@/views/pages/SearchTransaction')
+const EmailSent = () => import('@/views/pages/EmailSent')
+
 
 Vue.use(Router)
 
@@ -83,10 +88,17 @@ function configRoutes() {
           component: Dashboard
         },
         {
+          path: '/pages/Transaction/:id',
+          name: 'Transaction',
+          component: Transaction
+        },
+
+        {
           path: '/pages/TransactionList',
           name: 'TransactionList',
           component: TransactionList
         },
+
         {
           path: '/pages/users',
           name: 'Users',
@@ -119,31 +131,6 @@ function configRoutes() {
           component: Dashboard // Use the same Home component to handle the redirect
         },
 
-        // {
-        //   path: '/pages/404',
-        //   name: 'Page404',
-        //   component: Page404
-        // },
-        // {
-        //   path: '/pages/500',
-        //   name: 'Page500',
-        //   component: Page500
-        // },
-        // {
-        //   path: '/pages/login',
-        //   name: 'Login',
-        //   component: Login
-        // },
-        // {
-        //   path: '/pages/register',
-        //   name: 'Register',
-        //   component: Register
-        // },
-        // {
-        //   path: '/pages/landing',
-        //   name: 'Landing',
-        //   component: Landing
-        // },
       ]
     },
     {
@@ -169,7 +156,17 @@ function configRoutes() {
           name: 'Login',
           component: Login
         },
-     
+        {
+          path: 'searchTransaction',
+          name: 'SearchTransaction',
+          component: SearchTransaction
+        },
+        {
+          path: 'emailSent',
+          name: 'EmailSent',
+          component: EmailSent
+        },
+
       ]
     }
   ]

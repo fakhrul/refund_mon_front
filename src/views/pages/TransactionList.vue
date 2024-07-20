@@ -206,9 +206,29 @@
                             </tr>
                           </tbody>
                         </table>
+                        <!-- <CCard>
+                          <CCardHeader>
+                            <CDataTable
+                              :striped="striped"
+                              :border="true"
+                              :items="itemDetails"
+                              :fields="fieldDetails"
+                            >
+                            </CDataTable>
+                          </CCardHeader>
+                          <CCardBody> asds </CCardBody>
+                        </CCard> -->
                       </CCardBody>
                       <CCardFooter>
-                        <CSelect
+                        <CButton
+                      size="sm"
+                      color="info"
+                      class=""
+                      @click="onDetails(item)"
+                    >
+                      Details
+                    </CButton>
+                        <!-- <CSelect
                           label="Response"
                           horizontal
                           :options="responseOptions"
@@ -222,7 +242,7 @@
                               Update
                             </CButton>
                           </template>
-                        </CSelect>
+                        </CSelect> -->
                       </CCardFooter>
                     </CCard>
                   </CCollapse>
@@ -249,6 +269,12 @@
 <script>
 import TransactionApi from "../../lib/transactionApi";
 import moment from "moment";
+
+
+const itemDetails = [];
+const fieldDetails = [
+  { key: "RefNo" },
+];
 
 const items = [];
 const fields = [
@@ -289,6 +315,10 @@ export default {
   name: "TransactionList",
   data() {
     return {
+      itemDetails:  itemDetails.map((item, id) => {
+        return { ...item, id };
+      }),
+      fieldDetails,
       loading: true,
       response: "",
       responseOptions: [],
@@ -330,6 +360,12 @@ export default {
     },
   },
   methods: {
+    onDetails(item) {
+      var self = this;
+      self.$router.push({
+        path: `/pages/transaction/${item.RefNo}`,
+      });
+    },
     fetchResponseCodes() {
       var self = this;
       self.api
