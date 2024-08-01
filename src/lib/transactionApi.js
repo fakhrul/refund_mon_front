@@ -48,6 +48,14 @@ class TransactionApi {
 
     }
 
+    sendEmail(email, data){
+        var url = apiUrl + 'transactions/send_email/';
+        return api.call('put', url + email, data)
+            .then(({ data }) => {
+                return data
+            });
+    }
+
 }
 
 export default TransactionApi;

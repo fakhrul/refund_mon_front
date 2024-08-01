@@ -31,13 +31,35 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   var isAuth = auth.check();
+  console.log(isAuth);
+
   if (!isAuth) {
-    if (to.name == 'Login') {
-      next();
+    console.log(to.name);
+    switch (to.name) {
+      case 'Login':
+        next();
+        break;
+        case 'EmailSent':
+        case 'SearchTransaction':
+          {
+            next();
+          }
+          break;
+      default:
+        {
+          next({ name: 'Login' });
+        }
+        break;
+
     }
-    else {
-      next({ name: 'Login' });
-    }
+
+    // if (to.name == 'Login') {
+    //   next();
+    // }
+    // else {
+    //   console.log(to.name);
+    //   next({ name: 'Login' });
+    // }
 
 
   }
@@ -49,10 +71,10 @@ router.beforeEach((to, from, next) => {
         case 'Schedule':
         case 'Dashboard':
         case 'TransactionList':
-          case 'DropboxList':
+        case 'DropboxList':
         case 'Setting':
         case 'Users':
-        case'myProfile':
+        case 'myProfile':
           {
             next();
           }
@@ -117,8 +139,8 @@ function configRoutes() {
           name: 'User',
           component: User
         },
-       
-    
+
+
         {
           path: '/pages/myProfile',
           name: 'myProfile',

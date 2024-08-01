@@ -15,19 +15,35 @@
       </CToaster>
     </div>
     <div>
-      <CCardGroup columns class="card-columns cols-2">
-        <CCard>
-          <CCardHeader>Transaction By Month</CCardHeader>
-          <CCardBody><CChartBarExample 
-            :transactions="items"/></CCardBody>
-        </CCard>
-        <CCard>
-          <CCardHeader>Transaction By Response</CCardHeader>
-          <CCardBody><CChartPieExample
-            :transactions="items"
-            /></CCardBody>
-        </CCard>
-      </CCardGroup>
+      <CRow>
+        <CCol>
+          <CCardGroup columns class="card-columns cols-2">
+            <CCard>
+              <CCardHeader>Transaction By Month</CCardHeader>
+              <CCardBody><CChartBarExample :transactions="items" /></CCardBody>
+            </CCard>
+            <CCard>
+              <CCardHeader>Transaction By Response</CCardHeader>
+              <CCardBody><CChartPieExample :transactions="items" /></CCardBody>
+            </CCard> </CCardGroup
+        ></CCol>
+      </CRow>
+      <CRow>
+        <CCol>
+          <CCard>
+            <CCardBody
+              ><iframe
+                title="KIK"
+                width="100%"
+                height="500"
+                src="https://app.powerbi.com/view?r=eyJrIjoiZmVmOGM3MzMtYWZmOS00OTNkLTg2ZjMtYWM5YmYwMmY2YWI3IiwidCI6IjU2NTllZDAzLTg0M2QtNDRmNC1iNjg1LTI2YTI2ZGQ5Yjk4YyIsImMiOjEwfQ%3D%3D"
+                frameborder="0"
+                allowFullScreen="true"
+              ></iframe>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
     </div>
   </div>
 </template>
@@ -49,7 +65,7 @@ export default {
   data() {
     return {
       api: new TransactionApi(),
-      
+
       items: items.map((item, id) => {
         return { ...item, id };
       }),

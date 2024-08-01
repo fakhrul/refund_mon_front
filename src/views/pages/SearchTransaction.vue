@@ -177,7 +177,22 @@ export default {
 
   methods: {
     email() {
-      this.$router.push({ path: "/pages/emailSent" });
+
+      var self = this;
+      if (self.item) {
+        this.api
+          .sendEmail(self.obj.email, self.item)
+          .then((response) => {
+            this.$router.push({ path: "/pages/emailSent" });
+          })
+          .catch(({ data }) => {
+            self.toast("Error", helper.getErrorMessage(data), "danger");
+            self.item = null;
+          });
+      } else {
+        self.item = null;
+      }
+
 
     },
     resetObj() {
